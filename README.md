@@ -46,7 +46,7 @@ namespace TestTime
             return time.minutes;
         }
     }
-
+ 
     class Program
     {
         static void Main(string[] args)
