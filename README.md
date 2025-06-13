@@ -1,4 +1,3 @@
-# comprog2
 using System;
 
 namespace TestTime
@@ -12,11 +11,20 @@ namespace TestTime
             this.minutes = 60 * hh + mm;
         }
 
+        public int Hour
+        {
+            get { return minutes / 60; }
+        }
+
+        public int Minute
+        {
+            get { return minutes % 60; }
+        }
+
+        // ToString method 
         public override string ToString()
         {
-            int hh = minutes / 60;
-            int mm = minutes % 60;
-            return $"{hh:D2}:{mm:D2}";
+            return String.Format("{0:D2}:{1:D2}", Hour, Minute);
         }
     }
 
@@ -24,13 +32,17 @@ namespace TestTime
     {
         static void Main(string[] args)
         {
-            Time time1 = new Time(10, 5);
-            Time time2 = new Time(0, 45);
-            Time time3 = new Time(23, 59);
+            // Create and print Time 
+            Time time1 = new Time(23, 45);
+            Time time2 = new Time(10, 5);
+            Time time3 = new Time(0, 0);
 
-            Console.WriteLine("Time 1: " + time1);  // Expected: 10:05
-            Console.WriteLine("Time 2: " + time2);  // Expected: 00:45
-            Console.WriteLine("Time 3: " + time3);  // Expected: 23:59
+            Console.WriteLine("Time 1: " + time1); // Output: 23:45
+            Console.WriteLine("Hour: " + time1.Hour); // Output: 23
+            Console.WriteLine("Minute: " + time1.Minute); // Output: 45
+
+            Console.WriteLine("Time 2: " + time2); // Output: 10:05
+            Console.WriteLine("Time 3: " + time3); // Output: 00:00
         }
     }
 }
